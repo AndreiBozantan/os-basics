@@ -1,0 +1,30 @@
+
+body {
+    counter-reset: h1c;
+}
+
+h1 {
+    counter-reset: h2c
+}
+
+h2 {
+    counter-reset: h3c
+}
+
+h3 {
+    counter-reset: h4c
+}
+
+h4 {
+    counter-reset: h5c;
+}
+
+h3:before {
+    counter-increment: h3c;
+    content: counter(h3c) ". "
+}
+
+h4:before {
+    counter-increment: h4c;
+    content: counter(h3c) "." counter(h4c) ". "
+}
