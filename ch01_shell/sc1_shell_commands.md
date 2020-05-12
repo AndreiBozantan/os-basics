@@ -1,3 +1,6 @@
+---
+title: Comenzi Shell
+---
 @import "../os.less"
 
 ## Comenzi în shell
