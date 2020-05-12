@@ -10,17 +10,18 @@ title: Comenzi Shell
 
 Interpretorul de comenzi (sau shell în engleză) este un program (aplicație), similar cu orice alt program care îl folosim, scris de noi sau de altcineva. Principala sarcină a shell-ului este de a interacționa cu utilizatorul cu scopul rulării altor programe, și de a facilita comunicarea programelor între ele, folosind diverse mecanisme (argumente, semnale, canale, fișiere).
 
-Shell-ul este un foarte bun exemplu de aplicație cu un design reușit, care permite ca programele rulate din shell să fie complet independente între ele, ceea ce ajuta la crearea unui sistem modular (în engleză [decoupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming))). Pentru a realiza interacțiunea dintre mai multe programe folosind shell-ul, nu mai este neapărat necesar ca un program oarecare să știe ce face un alt program. Doar noi, ca utilizatori, folosim anumite informații despre fiecare program pentru a combina rezultatele lor, cu scopul de a realiza o acțiune mai complexă. Puteți să vedeți un reportaj interesant realizat la AT&T în 1982, despre versiunile inițiale ale shell-ului UNIX pe YouTube.
+Shell-ul este un foarte bun exemplu de aplicație cu un design reușit, care permite ca programele rulate din shell să fie complet independente între ele, ceea ce ajuta la crearea unui sistem modular (în engleză [decoupling](https://en.wikipedia.org/wiki/Coupling_(computer_programming))). Un sistem modular are avantajul că este descompus în componente care au o complexitate redusă. Pentru a realiza interacțiunea dintre mai multe programe folosind shell-ul, nu mai este neapărat necesar ca un program oarecare să știe ce face un alt program. Doar noi, ca utilizatori, folosim anumite informații despre fiecare program pentru a combina rezultatele lor, cu scopul de a realiza o acțiune mai complexă. Puteți să vedeți un reportaj interesant realizat la AT&T în 1982, despre versiunile inițiale ale shell-ului UNIX pe YouTube.
 [<img src="https://i.ytimg.com/vi/tc4ROCJYbm0/sddefault.jpg" alt="AT&T UNIX 1982" width="200"/>](https://www.youtube.com/watch?v=tc4ROCJYbm0)
 
 Pentru a executa comenzile utilizatorului shell-ul execută următoarele operații iterativ:
 
-1. Citește din fișierul de intrare (de la tastatură).
-2. Procesează textul citit și determină comanda (sau aplicația) care trebuie rulată.
-3. Construiește un context de execuție (environment): argumente, director curent, variabile de mediu (ex. `$HOME`, `$PATH`).
-4. lansează programul (sau comanda) în acest context de execuție.
-5. Așteaptă terminarea execuției comenzii.
-6. Repetă operațiile începând de la punctul 1.
+1. Afișează un prompt (o notificare că se poate introduce o comandă).
+2. Citește din fișierul de intrare (de la tastatură).
+3. Procesează textul citit și determină comanda (sau aplicația) care trebuie rulată și argumentele pentru comandă.
+4. Construiește un context de execuție (environment): argumente, director curent, variabile de mediu (ex. `$HOME`, `$PATH`).
+5. Lansează programul (sau comanda) în acest context de execuție.
+6. Așteaptă terminarea execuției comenzii.
+7. Repetă operațiile începând de la punctul 1.
  
 În continuare vom folosi interpretorul de comenzi `bash` pentru a exemplifica interacțiunea dintre utilizatori, aplicații și sistemul de operare. Pentru a încerca exemplele de mai jos și pentru a rezolva exercițiile, puteți să folosiți Google Cloud Shell https://ssh.cloud.google.com/.
 
