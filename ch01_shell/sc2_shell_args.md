@@ -168,22 +168,22 @@ IndexError: list index out of range
 
 2. Faceți modificările necesare în programul `loga` pentru terminarea programului să fie normală (nu forțată de sistemul de operare) și să producă mesaje corespunzătoare în cazul în care linia de comandă nu este corectă.
 
-2. Adăugați posibilitatea de a calcula logaritmul în orice bază atunci când programul `loga` primește 2 argumente, în acest caz primul argument fiind considerat baza, iar al doilea valoarea pentru care se calculează logaritmul.
+3. Adăugați posibilitatea de a calcula logaritmul în orice bază atunci când programul `loga` primește 2 argumente, în acest caz primul argument fiind considerat baza, iar al doilea valoarea pentru care se calculează logaritmul.
 
-3. Adăugați o validare că argumentele pentru programul `loga` sunt ambele numere întregi pozitive. (Se poate folosi fie funcția `strtol` sau o verificare că toate caracterele dintr-un string sunt cifre).
+4. Adăugați o validare că argumentele pentru programul `loga` sunt ambele numere întregi pozitive. (Se poate folosi fie funcția `strtol` sau o verificare că toate caracterele dintr-un string sunt cifre).
 
-4. În mod similar cu programul `loga` implementați programul `expo` care calculează funcția exponențială, cu baza implicită 2, atunci când nu este speicificată și baza ca argument.
+5. În mod similar cu programul `loga` implementați programul `expo` care calculează funcția exponențială, cu baza implicită 2, atunci când nu este speicificată și baza ca argument.
 
-5. Realizați un program care calculează aria următoarelor forme geometrice, în funcție numărul de argumente primite în linia de comandă reprezentând dimensiunile formei:
+6. Realizați un program care calculează aria următoarelor forme geometrice, în funcție numărul de argumente primite în linia de comandă reprezentând dimensiunile formei:
     - aria cercului (1 argument - raza);
     - aria dreptunghiului (2 argumente - lungime, lățime)
     - aria triunghiului (3 argumente - lungimile laturilor)
 
-6. Realizați un convertor de unitati de masură care poate funcționa ca în exemplele următoare:
+7. Realizați un convertor de unitati de masură care poate funcționa ca în exemplele următoare (puteți găsi o listă cu unitățile de măsură imperiale la adresa: https://en.wikipedia.org/wiki/Imperial_units#Mass_and_weight):
+
     - `conv 5 m to inch`
     - `conv 2.2 kg to lb`
     - `conv 10 l to gallons
-  Puteți găsi o listă cu unitățile de măsură imperiale la adresa: https://en.wikipedia.org/wiki/Imperial_units#Mass_and_weight.
 
 ------
 Andrei Bozantan, 2020 
