@@ -183,7 +183,7 @@ IndexError: list index out of range
 
     - `conv 5 m to inch`
     - `conv 2.2 kg to lb`
-    - `conv 10 l to gallons
+    - `conv 10 l to gallons`
 
 ------
 Andrei Bozantan, 2020 
