@@ -7,7 +7,115 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <style type="text/css">
+    @media screen and  (min-width: 21cm) {
+      #main {
+          /* padding: 1cm; */
+          width: 21cm;
+          font-size: 13.5pt !important;
+      }
+    }
 
+    @media screen and  (max-width: 14cm) {
+      #main {
+        /* padding: 2mm; */
+        font-size: 13pt !important;
+      }
+    }
+
+    p {
+      text-align: justify;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #048;
+        margin-top: 1em !important;
+        margin-bottom: 0.2em !important;
+    }
+
+    h5 {
+      margin: 0 !important;
+    }
+
+    .markdown-section p {
+      margin-top: 0 !important;
+    }
+
+    .markdown-section pre {
+      margin-top: 0;
+      background-color: #fefefa;
+    }
+
+    .markdown-section pre>code {
+      background-color: #fefefa;
+    }
+
+    /* h1 + p {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    h2 + p {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    h3 + p {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    h4 + p {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    h5 + p {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    ul, ol, dl {
+        margin-bottom: 0;
+        margin-top: 0;
+    } */
+
+    body {
+        counter-reset: h1c;
+    }
+
+    h1 {
+        counter-reset: h2c
+    }
+
+    h2 {
+        counter-reset: h3c
+    }
+
+    h3 {
+        counter-reset: h4c
+    }
+
+    h1:before {
+        counter-increment: h1c;
+        content: counter(h1c) ". ";
+    }
+
+    h2:before {
+        counter-increment: h2c;
+        content: counter(h1c) "." counter(h2c) ". "
+    }
+
+    /* h3:before {
+        counter-increment: h3c;
+        content: counter(h1c) "." counter(h2c) "." counter(h3c) ". "
+    }
+
+    h4:before {
+        counter-increment: h4;
+        content: counter(h1c) "." counter(h2c) "." counter(h3c) "." counter(h4c) ". "
+    } */
+  </style>
 </head>
 <body>
   <div id="app"></div>
