@@ -87,11 +87,9 @@ uname is hashed (/bin/uname)
 ```
 
 Mesajele afișate de comanda type au următoarea semnificație:
-Mesaj | Semnificație
-------|-------------
-`pwd is a shell builtin` | comanda `pwd` este internă (builtin).
-`mv is /bin/mv` | comanda `mv` este externă și locația ei în sistemul de fișiere este `/bin/mv`.
-`uname is hashed (/bin/uname)` | comanda `uname` este externă și locația ei în sistemul de fișiere este `/bin/uname`;<br /> în plus, locația comenzii este salvată intern în memorie de către shell, astfel încât, în momentul când comanda `uname` va fi rulată din nou, shell-ul nu va mai căuta locația ei în sistemul de fișiere.
+* `pwd is a shell builtin`: comanda `pwd` este internă (builtin).
+* `mv is /bin/mv`: comanda `mv` este externă și locația ei în sistemul de fișiere este `/bin/mv`.
+* `uname is hashed (/bin/uname)`: comanda `uname` este externă și locația ei în sistemul de fișiere este `/bin/uname`; în plus, locația comenzii este salvată intern în memorie de către shell, astfel încât, în momentul când comanda  `uname` va fi rulată din nou, shell-ul nu va mai căuta locația ei în sistemul de fișiere.
 
 ## Exemplu funcționare shell
 
@@ -99,7 +97,7 @@ Pentru a înțelege mai multe detalii despre modul de funcționare a unui shell 
 
 Pentru început vom afișa un *prompt* și vom citi o *comandă* de la tastatură (linia 1). În loc să executăm comanda o tipărim pe ecran (linia 2).
 
-```python {.line-numbers}
+```python
 s = input("> ")
 print(s)
 ```
@@ -111,7 +109,8 @@ $ python3 posh.py
 
 În continuare vom adăuga o buclă infinită, pentru ca shell-ul nostru să reia ciclul după procesarea unei comenzi.
 
-```python {.line-numbers highlight=1}
+<!-- ```python {.line-numbers highlight=1} -->
+```python
 while (True):
   s = input("> ")
   print(s)
@@ -119,7 +118,8 @@ while (True):
 
 În acest moment programul nostru rulează la infinit, și pentru a-l opri trebuie să folosim combinația de taste `Ctrl-C`, care în general oprește un program curent din shell în mod forțat. Pentru ca programul nostru să se termine în mod normal, vom adăuga prima comandă, `exit`.
 
-```python {.line-numbers highlight=4-5}
+<!-- ```python {.line-numbers highlight=4-5} -->
+```python
 while (True):
   s = input("> ")
   print(s)
@@ -131,7 +131,8 @@ Următoarele comenzi implementate sunt:
 - `version`: afișează versiunea shell-ului;
 - `help`: afișează comenzile recunosute.
 
-```python {.line-numbers highlight=7-8}
+<!-- ```python {.line-numbers highlight=7-8} -->
+```python
 VERSION="0.1"
 while (True):
   s = input("> ")
@@ -146,13 +147,14 @@ while (True):
 
 În continuare vom adăuga un mesaje de eroare, pentru cazul când comanda nu este recunoscută de shell, și în plus, nu mai afișăm comanda citită de la tastatură pe ecran.
 
-@import "posh/posh0.py" {.line-numbers highlight=10-11}
+<!-- @import "posh/posh0.py" {.line-numbers highlight=10-11} -->
+[posh0](posh/posh0.py ':include :type=code')
 
 În continuare, pentru a face programul mai ușor de modificat în viitor, de exemplu când adăugăm noi comenzi, vom înlocui șirul de instructiuni `if` cu un dicționar, un idiom des folosit în Python.
 La linia 19 este citită o comandă de la tastatură, iar apoi, la linia 20, folosind funcția `get` vom căuta comanda respectivă în dicționarul cu comenzi `commands` definit la liniile 11-15.
 Dicționarul `commands` asociază pentru fiecare nume de comandă, o funcție care implementează comanda respectivă și care va fi apelată la linia 24, pentru a executa comanda.
 
-@import "posh/posh1.py" {.line-numbers }
+[posh1](posh/posh1.py ':include :type=code')
 
 Observație, comenzile definite mai sus în `posh` sunt echivalente cu comenzile interne din `bash`.
 
@@ -217,9 +219,25 @@ exit
 
 4. Realizați un script `bash` numit `posh` care să execute programul Python `posh.py`.
 
-5. Încercați să traduceți programul `posh.py` în limbajul `C`
+5. Încercați să traduceți programul `posh.py` în limbajul `C`. Studiați exemplul de mai jos pentru a afla sintaxa utilizată la definirea pointerilor la funcții în limbajul C.
 
-(recomandare: https://en.wikipedia.org/wiki/Function_pointer#Example_in_C)
+https://en.wikipedia.org/wiki/Function_pointer#Example_in_C
+```c
+#include <stdio.h>  /* for printf */
+#include <string.h> /* for strchr */
+
+double cm_to_inches(double cm) {
+	return cm / 2.54;
+}
+
+int main(void) {
+	double (*func1)(double) = cm_to_inches;
+	char * (*func2)(const char *, int) = strchr;
+	printf("%f %s", func1(15.0), func2("Wikipedia", 'p'));
+	/* prints "5.905512 pedia" */
+	return 0;
+}
+```
 
 
 ------
