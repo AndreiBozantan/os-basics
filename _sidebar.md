@@ -1,3 +1,3 @@
 * [Home](/)
-* [Comenzi în shell](/ch01_shell/sc1_shell_commands.md)
-* [Argumente în linia de comandă](/ch01_shell/sc2_shell_args.md)
+* [Comenzi în shell](/s01_shell_commands/shell_commands.md)
+* [Argumente în linia de comandă](/s02_shell_args/shell_args.md)
