@@ -1,12 +1,7 @@
----
-title: Argumente în shell și programe
----
-@import "../os.less"
-
 ## Argumente în shell și programe
 
 ### Introducere
-În secțiunea precedentă am prezentat câteva exemple de comenzi simple. Pentru a avea un sistem cu o funcționalitate mult mai bogată, shell-ul folosește mai multe mijloace pentru a stabili datele de intrare și modul de funcționare pentru comenzile executate: argumente, variabile de mediu, fișiere, canale, semnale, valorile returnate la terminarea unui program. Aceste mijloace pot fi considerate ca un mod de comunicație între shell și un program, dar pot fi folosite de shell pentru a facilita comunicația între două programe. De asemenea programele pot să folosească aceste facilități oferite de sistemul de operare pentru a comunica direct între ele, fără intermediul shell-ului. În această secțiune vom descrie următoarele modul în care sunt folosite argumentele în shell și în programe scrise în limbajele Python și C. 
+În secțiunea precedentă am prezentat câteva exemple de comenzi simple. Pentru a avea un sistem cu o funcționalitate mult mai bogată, shell-ul folosește mai multe mijloace pentru a stabili datele de intrare și modul de funcționare pentru comenzile executate: argumente, variabile de mediu, fișiere, canale, semnale, valorile returnate la terminarea unui program. Aceste mijloace pot fi considerate ca un mod de comunicație între shell și un program, dar pot fi folosite de shell pentru a facilita comunicația între două programe. De asemenea programele pot să folosească aceste facilități oferite de sistemul de operare pentru a comunica direct între ele, fără intermediul shell-ului. În această secțiune vom descrie următoarele modul în care sunt folosite argumentele în shell și în programe scrise în limbajele Python și C.
 
 Majoritatea comenzilor executate din shell acceptă și un set de valori, care în acest context se numesc argumente. Argumentele pentru o comandă executată din shell sunt într-un fel similare cu parametrii unei funcții în limbajele de programare Python sau C. Aceste argumente stabilesc de obicei datele de intrare și modul de funcționare pentru comanda executată.
 
@@ -15,7 +10,7 @@ Majoritatea comenzilor executate din shell acceptă și un set de valori, care �
  - `$ man whoami` - parametrul specifică numele comenzii pentru care se va afișa manualul de utilizare;
  - `$ cd ..` - parametrul specifică numele directorului care va deveni directorul curent, în acest caz directorul părinte (`..`);
  - `$ type pwd` - parametrul specifică numele comenzii pentru care vrem să aflăm tipul (intern/extern).
- - `$ chmod u+x posh.py` - în acest caz avem doi parametrii: 
+ - `$ chmod u+x posh.py` - în acest caz avem doi parametrii:
    - `u+x` - specifică noile drepturi de acces pentru fișier; în acest caz proprietarul fișierului - `u` (user) - va avea în plus dreptul de execuție (`x`);
    - `posh.py` - specifică numele fișierului pentru care se modifica drepturile de access.
 
@@ -85,13 +80,13 @@ $ ls -l
 În limbajul C, argumentele pentru program sunt accesibile prin cei doi parametrii ai funcței `main`:
  - `int argc`: specifică numărul de parametrii din linia de comandă (este inclus și numele programului care este primul argument);
  - `char* argv[]`: este un array de string-uri care conține argumentele din linia de comandă.
-Pentru exemplificare vom include și varianta în limbajul C a programului `echo.py`. 
+Pentru exemplificare vom include și varianta în limbajul C a programului `echo.py`.
 
 @import "echo/echo.c" {.line-numbers}
 
 Pentru compliare și rulare folosim următoarele comenzi în shell:
 ```
-$ gcc -Wall -Werror -o echo echo.c 
+$ gcc -Wall -Werror -o echo echo.c
 $ ./echo hello os20
 ```
 
@@ -143,7 +138,7 @@ Acest program simplu conține și câteva probleme, de exemplu o eroare apare in
 $ ./loga
 Segmentation fault (core dumped)
 ```
-Această problemă apare deoarece elementul `argv[1]` are valoarea `NULL`, iar acestă valoare este folosită de funcția `strtol`, care va încerca să citească date de la o adresă de memorie invalidă (adresa 0). 
+Această problemă apare deoarece elementul `argv[1]` are valoarea `NULL`, iar acestă valoare este folosită de funcția `strtol`, care va încerca să citească date de la o adresă de memorie invalidă (adresa 0).
 
 În continuare vom transcrie programul `loga` în limbajul Python, și vom analiza modul în care se manifestă această problemă în programul `loga.py`:
 
@@ -186,7 +181,7 @@ IndexError: list index out of range
     - `conv 10 l to gallons`
 
 ------
-Andrei Bozantan, 2020 
+Andrei Bozantan, 2020
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/

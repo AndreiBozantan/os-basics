@@ -1,8 +1,3 @@
----
-title: Comenzi Shell
----
-@import "../os.less"
-
 ## Comenzi în shell
 
 
@@ -21,7 +16,7 @@ Pentru a executa comenzile utilizatorului shell-ul execută următoarele operaț
 4. lansează programul (sau comanda) în acest context de execuție.
 5. Așteaptă terminarea execuției comenzii.
 6. Repetă operațiile începând de la punctul 1.
- 
+
 În continuare vom folosi interpretorul de comenzi `bash` pentru a exemplifica interacțiunea dintre utilizatori, aplicații și sistemul de operare. Pentru a încerca exemplele de mai jos și pentru a rezolva exercițiile, puteți să folosiți Google Cloud Shell https://ssh.cloud.google.com/.
 
 
@@ -73,7 +68,7 @@ $ pwd
 $ cd ..
 $ pwd
 /home
-$ cd 
+$ cd
 $ pwd
 /home/student
 ```
@@ -154,7 +149,7 @@ while (True):
 
 @import "posh/posh0.py" {.line-numbers highlight=10-11}
 
-În continuare, pentru a face programul mai ușor de modificat în viitor, de exemplu când adăugăm noi comenzi, vom înlocui șirul de instructiuni `if` cu un dicționar, un idiom des folosit în Python. 
+În continuare, pentru a face programul mai ușor de modificat în viitor, de exemplu când adăugăm noi comenzi, vom înlocui șirul de instructiuni `if` cu un dicționar, un idiom des folosit în Python.
 La linia 19 este citită o comandă de la tastatură, iar apoi, la linia 20, folosind funcția `get` vom căuta comanda respectivă în dicționarul cu comenzi `commands` definit la liniile 11-15.
 Dicționarul `commands` asociază pentru fiecare nume de comandă, o funcție care implementează comanda respectivă și care va fi apelată la linia 24, pentru a executa comanda.
 
@@ -174,7 +169,7 @@ Pentru a putea executa mai facil programul `posh.py` pe linia 1 am adăugat un c
 #!/usr/bin/env python3
 ```
 
-Când un fișier text care conține un shebang este folosit ca o comandă în shell, acest fișier va fi executat de shell folosind programul specificat după shebang. De obicei acest program este un interpretor de programe script (bash, python, node, etc.). 
+Când un fișier text care conține un shebang este folosit ca o comandă în shell, acest fișier va fi executat de shell folosind programul specificat după shebang. De obicei acest program este un interpretor de programe script (bash, python, node, etc.).
 În plus, pentru a putea executa programul Python fișierul `posh.py` trebuie să fie marcat ca executabil, folosind comanda:
 ```sh
 $ chmod u+x posh.py
@@ -227,7 +222,7 @@ exit
 
 
 ------
-Andrei Bozantan, 2020 
+Andrei Bozantan, 2020
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 [cc-by-sa]: http://creativecommons.org/licenses/by-sa/4.0/
