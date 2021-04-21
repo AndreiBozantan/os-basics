@@ -17,7 +17,7 @@ Majoritatea comenzilor executate din shell acceptă și un set de valori, care �
 ### Comanda echo
 Pentru a înțelege mai exact modul în care sunt pot fi folosite argumentele specificate în linia de comandă, vom folosi ca exemplu comanda `echo` și vom implementa această comandă în inițial în limbajul Python și apoi vom face o comparație cu limbajul C. Comanda `echo` scrie în fișierul standard de ieșire (care de obicei este ecranul) argumentele primite, de exemplu:
 
-``` sh
+```shellsession
 $ echo hello
 hello
 $ echo hello os20
@@ -43,12 +43,12 @@ print('Arguments are:', sys.argv)
 ```
 
 Pentru executarea programului vom marca întâi fișierul ca fiind executabil:
-```sh
+```bash
 $ chmod u+x echo.py
 ```
 
 Acum putem să executăm programul în diverse moduri:
-```sh
+```bash
 $ ./echo.py hello
 Arguments are: ['./echo.py', 'hello']
 ./echo.py hello os20
@@ -70,7 +70,7 @@ Pentru a tipări toate argumentele pe aceeași linie, separate de spațiu, la fe
 
 Ca și un detaliu care poate fi semnificativ în unele situații, această variantă a programului `echo.py`, va tipări un caracter spațiu în plus la sfârșitul liniei, față de comannda `echo` din sistemul de operare. Pentru verificare putem folosi redirectarea fișierului standard de ieșire, pe care o vom discuta în detaliu într-un capitol următor. Apoi putem verifica dimensiunile pentru cele două fișiere folosind comanda `ls`, și putem observa că diferența constă în dimensiunea fișierelor, datorită spațiul adițional de la sfârșit.
 
-```sh
+```bash
 $ echo hello os20! > echo1
 $ ./echo.py hello os20! > echo2
 $ ls -l
@@ -82,7 +82,8 @@ $ ls -l
  - `char* argv[]`: este un array de string-uri care conține argumentele din linia de comandă.
 Pentru exemplificare vom include și varianta în limbajul C a programului `echo.py`.
 
-@import "echo/echo.c" {.line-numbers}
+<!-- @import "echo/echo.c" {.line-numbers} -->
+[echo/echo.c](echo/echo.c ':include :type=code')
 
 Pentru compliare și rulare folosim următoarele comenzi în shell:
 ```
@@ -97,7 +98,7 @@ Ca un exemplu adițional vom considera și un program care calculează logaritmu
 
 Vom salva versiunea inițială a programului în fișierul `loga.c`:
 
-```c {.line-numbers}
+```c
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -113,7 +114,7 @@ int main(int argc, char* argv[]) {
 Pentru a converti argumentul primit de program dintr-un string într-un număr vom folosi funcția `strtol` declarată în fișierul header `stdlib.h` (linia 7), iar pentru calcularea rezultatului vom folosi funcția `log2` (linia 8) declarată în fișierul header `math.h`.
 
 Pentru compilare vom folosi o comandă similară cu cea folosită pentru programul `echo.c`:
-```sh
+```bash
 $ gcc -Wall -Werror -o loga loga.c
 ```
 
@@ -123,18 +124,18 @@ loga.c:(.text+0x55): undefined reference to `log2'
 collect2: error: ld returned 1 exit status
 ```
 Aceasta este o eroare produsă de link editor și este semnalat faptul că nu a fost găsit codul pentru funcția `log2`. Pentru a rezolva problema, trebuie să instruim programul de link editare să includă și codul din biblioteca `math` în procesul de creare a programului executabil. Pentru aceasta vom include opțiunea `-lm`, unde `-l` are semnificația de `library` (adică faptul că se va  căuta cod pentru funcțiile folosite într-o bibliotecă), iar `m` este o prescurtare de la `math` și specifică biblioteca în care se face căutarea codului necesar. Atenție, această opțiune trebuie să apară după fișierul `.c` care include apelurile de bibliotecă.
-```sh
+```bash
 $ gcc -Wall -Werror -o loga loga.c -lm
 ```
 
 Acum putem folosi programul compilat:
-``` sh
+``` bash
 $ ./loga 1024
 10.000000
 ```
 
 Acest program simplu conține și câteva probleme, de exemplu o eroare apare in momentul când executăm programul fără argumente:
-```sh
+```bash
 $ ./loga
 Segmentation fault (core dumped)
 ```
@@ -145,7 +146,7 @@ Această problemă apare deoarece elementul `argv[1]` are valoarea `NULL`, iar a
 @import "loga/loga.py" {.line-numbers}
 
 La execuție apare următoarea eroare:
-```sh
+```bash
 $ ./loga.py
 Traceback (most recent call last):
   File "./loga.py", line 5, in <module>
