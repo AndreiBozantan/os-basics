@@ -1,4 +1,4 @@
-# Introducere
+## Introducere
 
 Interpretorul de comenzi (sau shell în engleză) este un program (aplicație), similar cu orice alt program care îl folosim, scris de noi sau de altcineva. Principala sarcină a shell-ului este de a interacționa cu utilizatorul cu scopul rulării altor programe, și de a facilita comunicarea programelor între ele, folosind diverse mecanisme (argumente, semnale, canale, fișiere).
 
@@ -18,11 +18,11 @@ Pentru a executa comenzile utilizatorului shell-ul execută următoarele operaț
 În continuare vom folosi interpretorul de comenzi `bash` pentru a exemplifica interacțiunea dintre utilizatori, aplicații și sistemul de operare. Pentru a încerca exemplele de mai jos și pentru a rezolva exercițiile, puteți să folosiți [Google Cloud Shell](https://ssh.cloud.google.com/).
 
 
-# Comenzi
+## Comenzi
 
 Termenul **comandă** este folosit in mod generic pentru a indica orice program sau activitate lansate in execuție folosind un shell. Pentru a înțelege mai exact modul în care funcționează un shell vom face în continuare și o distincție într comenzi interne și externe.
 
-## Comenzi externe
+### Comenzi externe
 
 Comenzile externe sunt programe independente care sunt disponibile în sistemul de fișiere. De exemplu câteva **comenzi externe** simple care sunt incluse de obicei cu sistemele de operare de tip UNIX sunt:
   - `uname` - afișează informații despre sistem
@@ -31,7 +31,7 @@ Comenzile externe sunt programe independente care sunt disponibile în sistemul 
   - `man` - afișează manualul de utilizare pentru o comandă dată
 
 
-##### Exemplu utilizare comenzi externe
+#### Exemplu utilizare comenzi externe
 
 ```sh
 $ uname
@@ -49,7 +49,7 @@ NAME
        whoami - print effective userid
 ```
 
-## Comenzi interne
+### Comenzi interne
 
 **Comenzile interne** sunt funcționalități implementate direct în shell, și sunt de oicei folosite pentru a afla sau modifica detalii despre starea internă a acestuia. În continuare sunt enumerate câteva comenzi interne:
   - `help` - afișează informații utile despre utilizarea shell-ului
@@ -58,8 +58,7 @@ NAME
   - `cd` (**c**hange **d**irectory) - modifică directorul curent
   - `pwd` (**p**rint **w**orking **d**irectory) - afișează directorul curent
 
-##### Exemplu utilizare comenzi interne
-
+#### Exemplu utilizare comenzi interne
 ```sh
 $ pwd
 /home/student
@@ -70,7 +69,9 @@ $ cd
 $ pwd
 /home/student
 ```
-## Comanda type
+
+
+### Comanda type
 
 Pentru a determina dacă o comandă este externă sau internă folosim comanda internă `type` care va afișa tipul comenzii.
 
@@ -92,7 +93,7 @@ Mesaj | Semnificație
 `mv is /bin/mv` | comanda `mv` este externă și locația ei în sistemul de fișiere este `/bin/mv`.
 `uname is hashed (/bin/uname)` | comanda `uname` este externă și locația ei în sistemul de fișiere este `/bin/uname`;<br /> în plus, locația comenzii este salvată intern în memorie de către shell, astfel încât, în momentul când comanda `uname` va fi rulată din nou, shell-ul nu va mai căuta locația ei în sistemul de fișiere.
 
-# Exemplu funcționare shell
+## Exemplu funcționare shell
 
 Pentru a înțelege mai multe detalii despre modul de funcționare a unui shell vom folosi ca exemplu un program Python care realizează operații similare cu interpretorul de comenzi `bash`. Pentru a realiza programul vom folosi editorul preferat și salvăm codul într-un fișier numit `posh.py` (**po**wer **sh**ell).
 
@@ -159,7 +160,7 @@ După această modificare, pentru a adăuga o nouă comandă internă vom proced
 
 O altă observație este că am modificat comanda `help` să tipărească cheile din dicționar, astfel încât atunci când vom adăuga comenzi noi, nu mai e nevoie să facem modificări și în comanda help.
 
-# Execuția programelor script în shell
+## Execuția programelor script în shell
 
 Pentru a putea executa mai facil programul `posh.py` pe linia 1 am adăugat un comentariu special care începe cu caracterele `#!`, care se numește [shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)).
 
@@ -202,7 +203,7 @@ student
 ```
 
 
-# Exerciții
+## Exerciții
 1. Modificați comanda `exit` astfel încât să fie cerută o confirmare pentru terminarea programului (utilizatorul trebuie să confirme sau să anuleze folosind opțiunile yes/no sau y/n).
 
 2. Modificați comanda `help` astfel încât să afișeze doar numele comenzilor, câte una pe o linie, după modelul de mai jos:

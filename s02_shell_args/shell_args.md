@@ -1,6 +1,6 @@
-## Argumente în shell și programe
+<!-- # Argumente în linia de comandă -->
 
-### Introducere
+## Introducere
 În secțiunea precedentă am prezentat câteva exemple de comenzi simple. Pentru a avea un sistem cu o funcționalitate mult mai bogată, shell-ul folosește mai multe mijloace pentru a stabili datele de intrare și modul de funcționare pentru comenzile executate: argumente, variabile de mediu, fișiere, canale, semnale, valorile returnate la terminarea unui program. Aceste mijloace pot fi considerate ca un mod de comunicație între shell și un program, dar pot fi folosite de shell pentru a facilita comunicația între două programe. De asemenea programele pot să folosească aceste facilități oferite de sistemul de operare pentru a comunica direct între ele, fără intermediul shell-ului. În această secțiune vom descrie următoarele modul în care sunt folosite argumentele în shell și în programe scrise în limbajele Python și C.
 
 Majoritatea comenzilor executate din shell acceptă și un set de valori, care în acest context se numesc argumente. Argumentele pentru o comandă executată din shell sunt într-un fel similare cu parametrii unei funcții în limbajele de programare Python sau C. Aceste argumente stabilesc de obicei datele de intrare și modul de funcționare pentru comanda executată.
@@ -14,7 +14,7 @@ Majoritatea comenzilor executate din shell acceptă și un set de valori, care �
    - `u+x` - specifică noile drepturi de acces pentru fișier; în acest caz proprietarul fișierului - `u` (user) - va avea în plus dreptul de execuție (`x`);
    - `posh.py` - specifică numele fișierului pentru care se modifica drepturile de access.
 
-### Comanda echo
+## Comanda echo
 Pentru a înțelege mai exact modul în care sunt pot fi folosite argumentele specificate în linia de comandă, vom folosi ca exemplu comanda `echo` și vom implementa această comandă în inițial în limbajul Python și apoi vom face o comparație cu limbajul C. Comanda `echo` scrie în fișierul standard de ieșire (care de obicei este ecranul) argumentele primite, de exemplu:
 
 ```shellsession
@@ -32,10 +32,10 @@ $ echo ana are mere
 ana are mere
 ```
 
-### Programul echo în Python
+## Programul echo în Python
 Pentru accesarea argumentelor din linia de comandă într-un program scris în limbajul Python este folosită variabila `argv` definită în modulul `sys`. Pentru exemplificare vom folosi următorul program salvat în fișierul `echo.py`.
 
-```py {.line-numbers}
+```py
 #!/usr/bin/env python3
 import sys
 
@@ -57,7 +57,7 @@ Arguments are: ['./echo.py', 'hello', 'os20']
 
 Rulând programul `echo.py`, observăm că variabila `sys.argv` este o listă, și că primul argument din această listă (elementul de la poziția 0) este numele programului. Pentru a replica mai exact funcționalitatea comenzii `echo`, vom modifica programul `echo.py` să tipărească exact valorile din lista `sys.argv`:
 
-```py {.line-numbers}
+```py
 #!/usr/bin/env python3
 import sys
 for i in range(1, len(sys.argv)):
@@ -66,7 +66,7 @@ for i in range(1, len(sys.argv)):
 
 Pentru a tipări toate argumentele pe aceeași linie, separate de spațiu, la fel cu comanda `echo`, va trebui să folosim parametrul cu nume `end` pentru funcția `print`, și în plus să tipărim o linie goală la sfârșit:
 
-@import "echo/echo.py" {.line-numbers}
+[echo](echo/echo.py ':include :type=code')
 
 Ca și un detaliu care poate fi semnificativ în unele situații, această variantă a programului `echo.py`, va tipări un caracter spațiu în plus la sfârșitul liniei, față de comannda `echo` din sistemul de operare. Pentru verificare putem folosi redirectarea fișierului standard de ieșire, pe care o vom discuta în detaliu într-un capitol următor. Apoi putem verifica dimensiunile pentru cele două fișiere folosind comanda `ls`, și putem observa că diferența constă în dimensiunea fișierelor, datorită spațiul adițional de la sfârșit.
 
@@ -76,14 +76,13 @@ $ ./echo.py hello os20! > echo2
 $ ls -l
 ```
 
-### Programul echo în C
+## Programul echo în C
 În limbajul C, argumentele pentru program sunt accesibile prin cei doi parametrii ai funcței `main`:
  - `int argc`: specifică numărul de parametrii din linia de comandă (este inclus și numele programului care este primul argument);
  - `char* argv[]`: este un array de string-uri care conține argumentele din linia de comandă.
 Pentru exemplificare vom include și varianta în limbajul C a programului `echo.py`.
 
-<!-- @import "echo/echo.c" {.line-numbers} -->
-[echo/echo.c](echo/echo.c ':include :type=code')
+[echo](echo/echo.c ':include :type=code')
 
 Pentru compliare și rulare folosim următoarele comenzi în shell:
 ```
@@ -93,7 +92,7 @@ $ ./echo hello os20
 
 Pentru referință, puteți găsi o versiune oficială a codului în limbajul C pentru comanda `echo` la adresa https://github.com/coreutils/coreutils/blob/master/src/echo.c.
 
-### Program pentru calcularea logaritmilor
+## Program pentru calcularea logaritmilor
 Ca un exemplu adițional vom considera și un program care calculează logaritmul în baza 2 pentru un număr, specificat ca argument în linia de comandă.
 
 Vom salva versiunea inițială a programului în fișierul `loga.c`:
@@ -143,7 +142,7 @@ Această problemă apare deoarece elementul `argv[1]` are valoarea `NULL`, iar a
 
 În continuare vom transcrie programul `loga` în limbajul Python, și vom analiza modul în care se manifestă această problemă în programul `loga.py`:
 
-@import "loga/loga.py" {.line-numbers}
+[loga](loga/loga.py ':include :type=code')
 
 La execuție apare următoarea eroare:
 ```bash
@@ -158,7 +157,7 @@ IndexError: list index out of range
 
 
 
-### Exerciții
+## Exerciții
 
 1. Modificați programul `echo.py` astfel încât să nu tipărească spațiul adițional la sfârșit.
 

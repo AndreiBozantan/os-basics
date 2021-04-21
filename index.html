@@ -53,6 +53,7 @@
 
     body {
         counter-reset: h1c;
+        counter-reset: h2c
     }
 
     h1 {
@@ -67,25 +68,16 @@
         counter-reset: h4c
     }
 
-    h1:before {
-        counter-increment: h1c;
-        content: counter(h1c) ". ";
-    }
-
     h2:before {
         counter-increment: h2c;
-        content: counter(h1c) "." counter(h2c) ". "
+        content: counter(h2c) ". "
     }
 
-    /* h3:before {
+    h3:before {
         counter-increment: h3c;
-        content: counter(h1c) "." counter(h2c) "." counter(h3c) ". "
+        content: counter(h2c) "." counter(h3c) ". "
     }
 
-    h4:before {
-        counter-increment: h4;
-        content: counter(h1c) "." counter(h2c) "." counter(h3c) "." counter(h4c) ". "
-    } */
   </style>
 </head>
 <body>
