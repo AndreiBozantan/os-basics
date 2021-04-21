@@ -1,5 +1,6 @@
 # OS Basics
 
+https://andreibozantan.github.io/os-basics/
 
 -----
 Andrei Bozantan, 2020
