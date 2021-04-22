@@ -1,3 +1,6 @@
+# COMENZI ÎN SHELL
+
+
 ## Introducere
 
 Interpretorul de comenzi (sau shell în engleză) este un program (aplicație), similar cu orice alt program care îl folosim, scris de noi sau de altcineva. Principala sarcină a shell-ului este de a interacționa cu utilizatorul cu scopul rulării altor programe, și de a facilita comunicarea programelor între ele, folosind diverse mecanisme (argumente, semnale, canale, fișiere).

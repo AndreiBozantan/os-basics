@@ -1,4 +1,4 @@
-<!-- # Argumente în linia de comandă -->
+# ARGUMENTE ÎN LINIA DE COMANDĂ
 
 ## Introducere
 În secțiunea precedentă am prezentat câteva exemple de comenzi simple. Pentru a avea un sistem cu o funcționalitate mult mai bogată, shell-ul folosește mai multe mijloace pentru a stabili datele de intrare și modul de funcționare pentru comenzile executate: argumente, variabile de mediu, fișiere, canale, semnale, valorile returnate la terminarea unui program. Aceste mijloace pot fi considerate ca un mod de comunicație între shell și un program, dar pot fi folosite de shell pentru a facilita comunicația între două programe. De asemenea programele pot să folosească aceste facilități oferite de sistemul de operare pentru a comunica direct între ele, fără intermediul shell-ului. În această secțiune vom descrie următoarele modul în care sunt folosite argumentele în shell și în programe scrise în limbajele Python și C.
