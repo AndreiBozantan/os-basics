@@ -1,6 +1,6 @@
 * [Home](/)
-* [Comenzi în shell](/s01_shell_commands/shell_commands.md)
-* [Argumente în linia de comandă](/s02_shell_args/shell_args.md)
+* [Comenzi în shell](/s01-shell-commands/shell-commands.md)
+* [Argumente în linia de comandă](/s02-shell-args/shell-args.md)
 * [Sistemul de fișiere](s03-fs-basics/fs-basics.md)
 * [API fișiere în limbajul C](s04-files-api/files-api.md)
 * [Funcționalități utile în shell](s05-shell-utils/shell-utils.md)
