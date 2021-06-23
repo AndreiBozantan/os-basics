@@ -7,6 +7,7 @@ Sistemul de fișiere UNIX are o structură arborescentă compusă din două cate
 Un sistem de fișiere este stocat pe un dispozitive de stocare a datelor, de exemplu: HDD, SSD, USB stick. Un dispozitiv de stocare poate fi partiționat (împărțit) în mai multe partiții (secțiuni), astfel încât, pe fiecare partiție se va putea stoca un alt sistem de fișiere. De asemenea, mai multe dispozitive de stocare pot fi combinate într-un dispozitiv virtual pentru a stoca un singur sistem de fișiere mai mare, de exemplu folosind tehnologia RAID (în hardware). Există și tipuri de sisteme de fișiere care oferă nativ posibilitatea de a folosi mai multe dispozitive: zfs (Sun/Oracle), btrfs.
 
 În sistemele UNIX (și Windows) există posibilitatea de a „lipi” (în engleză mount) un sistem de fișiere într-un alt sistem de fișiere.
+Sistemele de operare pe bază de Unix adesea incud programe și unelte ce asistă în procesul de „lipire” (mounting) și îi furnizează noi funcționalități. Unele dintre aceste strategii au fost numite “auto-mounting” drept reprezentare a scopului lor.
 
 Structura fișierelor nu este impusă de sistemul de operare: orice fișier este văzut ca un șir (flux) de bytes (în engleză stream) și este responsabilitatea programelor să gestioneze interpretarea corectă acestui flux. În principiu există două mari categorii de fișiere folosite în mod direct de utilizatori: fișiere text și binare. Directoarele sunt în esență tot fișiere, dar structura lor internă este cunoscută și gestionată de sistemul de operare, care le folosește pentru a realiza structura ierarhică a sistemului de fișiere.
 
@@ -25,8 +26,48 @@ Fișierele și directoarele care au un nume care începe cu caracterul punct sun
 Principalul rol al sistemului de fișiere este de a abstractiza și standardiza procesul de acces la dispozitivele de stocare pentru utlizatori și pentru programele rulate de utilizator. De exemplu într-un program folosim aceleași funcții pentru a accesa datele de pe un HDD sau de pe un SSD, deși modul lor de funcționare este complet diferit. Dacă programele ar lucra direct cu hardware-ul, atunci când înlocuim un HDD cu un SSD, ar trebui să facem rost de actualizări la toate programele. În plus și alte dispozitive din sistem sunt abstractizate prin conceptul de fișier, de exemplu ecranul și tastatura.
 
 Un alt rol al sistemului de fișiere este acela de a gestiona accesul simultan al mai multor aplicații la dispozitivele de stocare (virtualizare), astfel încât executarea operațiilor se face într-un mod eficient care asigură și corectitudinea rezultatelor. De exemplu, câteva din funcționalitățile oferite de anumite sisteme de fișiere sunt: detecția și corecția erorilor, criptarea datelor, arhivarea datelor, istoricul modificărilor.
-
 De asemenea sistemul de fișiere asigură și protecția datelor între diferite aplicații și între diferiți utilizatori ai sistemului. De exemplu, un utilizator obișnuit nu poate modifica fișierele sistemului de operare, sau fișierele altui utilizator.
+Sistemele de operare bazate pe Unix (Unix-like) creează un sistem de fișiere virtual, care face ca toate fișierele prezente pe toate dispozitivele de stocare să pară că există într-o singulă ierarhie. Astfel, în acele sisteme, există un singur director root și fiecare fișier ce există în sistem este localizat sub acesta. Sistemele pe bază de Unix pot folosi și un disk RAM sau resursă partajată în rețea (network shared resource) ca director root.
+
+Avantajele ale unui sistem orientat pe fișiere (în special într-o bază de date mai mare) sunt:
+1.	Posibilitatea de backup:
+-	Este posibilă realizarea mai rapidă și automatizată a creării unei copii de rezervă a bazelor de date stocate într-un sistem de fișiere.
+-	Sistemele informatice furnizează funcționalități ce servesc  acest scop. Este posibil dezvoltarea aplicațiilor software specifice pentru eficientizarea procesului de backup.
+2.	Caracterul compact:
+-	Există posibilitatea stocării în mod compact a datelor.
+3.	Accesarea datelor:
+-	Sistemele informatice furnizează tehnici avansate de accesare a datelor stocate în fișiere într-un mod ușor și eficient.
+4.	Editarea:
+-	Este ușor să edităm orice informație stocată în computere sub formă de fișiere
+-	Aplicații specifice (programe de editare) pot fi folosite pentru acest scop.
+5.	Accesul de la distanță:
+-	În sistemele informatice este posibil să accesăm informațiile de la distanță.
+-	Astfel, pentru a accesa informații nu e necesar ca un utilizator să rămână prezent la locația în care sunt păstrate fizic datele.
+6.	Distribuirea:
+-	Informațiile stocate în cadrul unui sistem de fișiere pot fi distribuite între multipli utilizatori în același timp.
+Dezavantaje ale unui sistem orientat pe fișiere:
+1.	Redundanța datelor:
+-	Este posibil ca aceeași informație să fie duplicată în diferite fișiere. Acest lucru duce la redundanța datelor și rezultă irosirea memoriei de stocare.
+2.	Inconsistența datelor:
+-	Din cauza redundanței datelor, este posibil ca datele să nu fie consistente.
+Ex: versiuni diferite ale aceluiași fișier în mai multe locuri.
+3.	Dificultatea accesării datelor:
+-	Accesarea datelor nu este convenabilă și eficientă în sistemul de fișiere.
+Ex: trebuie parcurge multe dosare și sub-dosare
+4.	Limitările distribuirii datelor:
+-	Datele sunt împrăștiate în diferite fișiere. De asemenea, diferite fișiere pot avea diferite formate și pot fi stocate amestecat în dosare.
+5.	Probleme de integritate a datelor:
+-	Integritatea datelor se referă la faptul că informațiile din baza de date sunt și corecte și consistente. 
+6.	Probleme de atomicitate:
+-	Orice operație dintr-o bază de date/ sistem de fișiere trebuie să fie atomică. Astfel, aceasta trebuie să se întâmple în întregime sau deloc.
+Ex: Dacă în timpul mutării unui fișier dintr-o zonă de stocare în alta apare vreo eroare sau întrerupere forțată, fișierul în cauză poate fi pierdut.
+7.	Anomalii de acces simultan:
+-	Multiplii utilizatori au permisiunea de a accesa simultan fișiere. Acest lucru este posibil pentru o mai bună performanță și timp de răspuns mai scurt. 
+8.	Probleme de securitate:
+-	Bazele de date are trebui să fie accesibile utilizatorilor într-un mod limitat.
+-	Fiecare utilizator ar trebui să aibă acces strict la datele de care are nevoie. 
+
+
 
 
 ## Organizarea sistemului de fișiere în Linux
