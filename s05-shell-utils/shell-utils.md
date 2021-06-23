@@ -501,7 +501,7 @@ diff <(seq 50 100 | shuf | ./mmp) <(echo 53 99) && echo "OK"
 ```
 
 
-### Exerciții
+## Exerciții
 1. Implementați programul `xargs` în limbajul `C`. Folosiți un array cu dimensiune dinamică, în care adăugarea elementelor pe ultima poziție are ordin de complexitate constant amortizat, `O(1)` (programul va realiza aceleași operații cu varianta Python).
 
 2. Modificați programul `mmp` pentru a elimina limitarea numărului maxim de elemente procesate.

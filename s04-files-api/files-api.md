@@ -171,7 +171,7 @@ Următorul program afișează dimensiunea în pixeli a imaginilor salvate în fo
 [lsd](lsd/lsd.c ':include')
 
 
-### Exerciții
+## Exerciții
 1. Pentru programul `wc` tratați și cazul când nu sunt specificate fișiere de intrare. În acest caz va fi procesat fișierul standard de intrare. Acest fapt permite combinarea programelor folosind funcționalitatea "pipe" (|) din shell. Implementați și funcționalitatea de afișare a totalurilor pentru mai multe fișiere.
 
 2. Modificați programul `cp` astfel încât dimensiunea buffer-ului folosit să fie fixă. (Nu citiți tot fișierul în memorie).
