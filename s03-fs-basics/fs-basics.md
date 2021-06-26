@@ -74,33 +74,65 @@ D (door)
 
 ### mkdir, rmdir
 `$ mkdir nume_director`
-Creează un director cu numele dat.
+Creează un director cu numele dat. <br/>
+**Atenție! Nu se poate crea un director care deja există.** 
+<br/>
+`Opțiuni:`
+- `-	mkdir {dir1,dir2,dir3,dir4}` -> crează directoare multiple in locația curentă (nu se folosesc spații după virgulă);
+- `-	p directory/path/newdir` -> crează o structură de directoare cu directoarele părinte lipsă (dacă există);
+- `-	m777 nume_director` -> crează un director care oferă permisiunea de executare, scriere și citire tuturor utilizatorilor;
+- `-	v nume_director(s)` -> afișează un mesaj pentru fiecare director creat.
+
 
 `$ rmdir nume_director`
-Șterge directorul indicat (acesta trebuie să fie gol).
+Șterge directorul indicat (acesta trebuie să fie gol). <br/>
+De asemenea, se pot șterge mai multe directoare deodată:
+`$ rmdir [nume_director1][nume_director2][nume_director3]`
+	în cazul în care comanda va găsi conținut într-unul dintre directoare, îl va ignora, trecând la următorul director <br/>
+`Opțiuni:`
+- `-	p` -> șterge mai întâi directorul copil, iar după aceea directorul parinte;
+- `-	v` -> afișează informații pentru fiecare director procesat;
+- `-	version` -> folosită pentru a afișa informații despre versiune;
+- `-	ignore-fail-on-non-empty` -> această opțiune nu raporteză mesajele de eroare atunci când se încearcă ștergerea unui fișier care nu este gol.
 
 
 ### cp, mv, rm
 `$ cp [opțiuni] fișier1 fișier2`
 Face o copie a lui `fişier1`, cu numele `fişier2`.
 
+
 `cp [opțiuni] fișier1 fișier2 fișier_n dir`
-Copiază fișierele indicate în directorul dir. Opțiuni:
-`-i` (interactiv): întreabă înainte de a suprascrie;
-`-r` (recursiv): copiază toate fișierele și subdirectoarele din directorul sursă indicat.
+Copiază fișierele indicate în directorul dir. <br/>
+`Opțiuni:`
+- `-i` (interactiv): întreabă înainte de a suprascrie;
+- `-r` (recursiv): copiază toate fișierele și subdirectoarele din directorul sursă indicat.
+- `-b (backup)` -> crează o cpie de rezervă a fișierului destinatie in același director, cu un alt nume și un format diferit;
+- `-f (force)` -> dacă sistemul nu poate deschide fișierul destinație pentru a se efectua operația de scriere deoarece utilizatorul nu are drepturi de scriere, cu această comandă fișierul destinatie este mai întâi șters după care copierea conținutului este realizată din fișierul sursă in destinație;
+- `-p (preserve)` -> se vor păstra informații despre ultima dată când s-a realizat o modificare, proprietarul (dacă are permisiunea de a afișa) și permisiunile fișierului.
+
+
 
 `$ mv [opțiuni] fișier1 fișier2`
 Redenumește `fişier1`, ca `fişier2`.
 
-`$ mv [opțiuni] fișier1 fișier2 fișier_n dir`
-Mută fișierele indicate în directorul `dir`. Opțiuni:
-`-i` (interactiv): întreabă înainte de a suprascrie. (Un catalog e mutat implicit împreună cu întreg conținutul, deci opțiunea `-r` nu mai apare, spre deosebire de copiere).
+`$ mv [opțiuni] fișier1 fișier2 fișier_n dir` 
+Mută fișierele indicate în directorul `dir`. <br/>
+`Opțiuni:`
+- `-i (interactiv)`: întreabă înainte de a suprascrie. (Un catalog e mutat implicit împreună cu întreg conținutul, deci opțiunea `-r` nu mai apare, spre deosebire de copiere).
+- `-f (force)` -> forțează scrierea unui fișier protejat;
+- `-n (no-clobber)` -> previne un fișier de a fi suprascris;
+- `-b (backup)` -> crează o copie de siguranță; 
+- `-version` -> afișează versiunea curentă a funcției.
 
-`$ rm [opțiuni] nume_fișier`
-Șterge fișierul specificat. Opțiuni:
-`-i` (interactiv) solicită confirmare;
-`-f` forțează (fără confirmare);
-`-r` șterge recursiv tot conținutul directorului indicat.
+
+
+`$ rm [opțiuni] nume_fișier/nume_director` 
+Șterge fișierul/directorul specificat (această comandă poate sterge directoare care au sau nu conținut). <br/>
+`Opțiuni:`
+- `-i` (interactiv) solicită confirmare;
+- `-f` forțează (fără confirmare);
+- `-r` șterge recursiv tot conținutul directorului indicat.
+- `-version` afișează verisunea curentă a funției.
 
 ### find
 `$ find director [opțiuni] [condiţie]`
