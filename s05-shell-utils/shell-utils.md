@@ -14,6 +14,145 @@ $ echo 1   2   3
 Caracterele speciale din shell sunt:
 <code>&num; & * ? [ ] ( ) = | ^ ; < > &grave; $ ” ‚ \ ~ </code>
 
+### Utilități caractere speciale in shell
+
+<code>`#`</code>  - Începe un comentariu care se extinde până la finalul liniei de comandă. Comentariile sunt note explicative și nu sunt procesate de către shell.
+```sh
+$ # acesta este un comentariu si este ignorat de catre shell
+$ 
+```
+
+<code>`&`</code>  - Când este folosit la finalul unei comenzi, rulează comanda în fundal (nu așteaptă finalul execuției acesteia). Shell-ul poate fi folosit în timp ce comanda rulează în background. Shell-ul returnează process ID-ul comenzii lansate în execuție, după care se reîntoarce la a citi din fișierul de intrare.
+```sh
+$ gedit command_address.page &
+[1] 3831
+$ 
+```
+
+<code>`? * []`</code>  - Sunt șabloane pentru numele fișierelor. Diferența dintre primele două constă în faptul că “?” se potrivește unui singur caracter, iar “*” se potrivește cu zero sau mai multe caractere. În ceea ce privește caracterele “[ ]”, se potrivesc oricărei apariții a unui caracter cuprins între “[ ]”.
+```sh
+$ ls *.c
+c.c  program.c  threadC.c fisier.c
+
+$ echo fisier.?
+fisier.c fisier.h fisier.m fisier.d
+
+$ echo fisier.[chm]
+fisier.c fisier.h fisier.m
+
+```
+[Mai multe exemple](#șabloane-pentru-numele-fișierelor)
+
+<code>`( )`</code>  - Folosite pentru a executa comenzi într-un subshell. Modificarea variabilelor în subshell nu are efect asupra shell-ului curent.
+```sh
+$ (seq -s" " 2 5)
+2 3 4 5
+$ t=2
+$ (t=4)
+$ echo $t
+2
+```
+
+<code>=</code>  - Atribuie o valoarea unei variabile. Nu este permis să punem spații înaintea sau după caracterul “=”.
+```sh
+$ x=2
+$ y=10
+$ echo $x $y
+2 10
+```
+
+<code>|</code>  - Trimite output-ul de la o comandă la altă comandă. Folosit la înlănțuirea a mai multe comenzi. 
+```sh
+$ seq 2 10 | grep 7
+7
+```
+[Mai multe exemple](#pipes)
+
+<code>^</code>  - Poate fi folosit pentru a găsi și înlocui o secvență de caractere din comanda precedentă. Shell-ul înlocuiește în comanda precedentă prima apariție a secvenței de caractere căutata și rulează comanda modificată.
+```sh
+$ echo 2 2 3
+2 2 3
+$ ^2^4
+4 2 3
+```
+
+<code>;</code>  - Este folosit pentru a separa mai multe comenzi de pe aceeași linie de comandă.
+```sh
+$ seq -s" " 2 5; echo 3 2 1
+2 3 4 5
+3 2 1
+```
+
+<code>< ></code>  - Folosite pentru redirectarea output-ului, respectiv input-ului către un fișier.
+```sh
+$ (seq 2 10)>f1.txt
+$ wc -l < f1.txt
+9
+```
+[Mai multe exemple](#redirectare)
+
+<code>`</code>  - Folosit pentru substituția de comenzi (poate fi folosit în loc de “$(comandă)”)
+```sh
+$ echo `seq 2 5`
+2 3 4 
+```
+
+<code>$</code>  - Folosit pentru a parsa valoarea variabilelor către comenzi (utilizare “$nume_variabilă”). Poate fi folosit și pentru substituția de comenzi (utilizare “$(comandă)”) sau pentru a obține rezultatul a diferite expresii (utilizare “$((expresie))”). Se mai poate întâlni și împreuna cu “{ }” pentru expansiunea parametrilor, folosită pentru a parsa valoarea unei variabilei sau șiruri de caractere către comenzi (utilizare “${variabilă}”).
+```sh
+$ t=2
+$ echo t
+t
+$ echo $t
+2
+$ echo ${t}
+2
+$ echo $(seq 2 5)
+2 3 4 5
+```
+
+<code>"</code>  - Protejează textul cuprins între ele, permite substituții și anulează majoritatea caracterelor speciale, cu câteva excepții.
+```sh
+$ echo "#ana are $t mere"
+#ana are 2 mere
+```
+[Mai multe despre anularea caracterelor speciale](#anularea-caracterelor-speciale)
+
+
+<code>'</code>  - Utilizare asemănătoare cu ", însa anulează toate caracterele speciale.
+```sh
+$ echo '#ana are $t mere'
+#ana are $t mere
+```
+[Mai multe despre anularea caracterelor speciale](#anularea-caracterelor-speciale)
+
+
+<code>\\</code>  - Protejează caracterul imediat următor din a fi interpretat ca un caracter special. Funcționează în afara ghilimelelor, în interiorul unei secvențe cuprinse între dublu ghilimele, este ignorat în cazul în care este găsit în cadrul ghilimelelor normale.
+```sh
+$ echo "\$t mere"
+$t mere
+```
+<code>,</code>  - Leagă împreuna mai multe operații aritmetice înlănțuite.
+```sh
+$ let "t2 = ((a = 9, 15 / 3))"
+$ echo $t2
+5
+$ echo $a
+9
+```
+
+<code>~</code>  - Reprezintă directorul home al utilizatorului curent.
+```sh
+$ pwd
+/home/user/randomdir
+$ cd ~
+$ pwd
+/home/user
+$ echo ~
+/home/user
+
+```
+
+
 ### Anularea caracterelor speciale
 Pentru a anula caracterele speciale, se pot folosi următoarele moduri de deautorizare (escape):
  - apostrofuri (`'text'`) - anulează toate caracterele speciale
